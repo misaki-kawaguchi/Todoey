@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoey_practice/widgets/tasks_screen.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -63,35 +64,6 @@ class TasksScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-// タスクのリスト一覧
-class TasksList extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        TaskTile(),
-        TaskTile(),
-      ],
-    );
-  }
-}
-
-// リスト1つ分
-class TaskTile extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text('This is a task.'),
-      trailing: Checkbox(
-        value: false,
-        onChanged: (bool? value) {},
       ),
     );
   }
