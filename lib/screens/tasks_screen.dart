@@ -9,7 +9,6 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-
   List<Task> tasks = [
     Task(name: 'Buy milk'),
     Task(name: 'Buy egg'),
@@ -26,7 +25,11 @@ class _TasksScreenState extends State<TasksScreen> {
         onPressed: () {
           showModalBottomSheet(
             context: context,
-            builder: (context) => AddTaskScreen(),
+            builder: (context) => AddTaskScreen(
+              (newTaskTitle) {
+                print(newTaskTitle);
+              },
+            ),
           );
         },
       ),
