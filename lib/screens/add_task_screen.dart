@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:todoey_practice/models/task.dart';
+import 'package:todoey_practice/models/task_data.dart';
+import 'package:provider/provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
-
-  final Function addTaskCallback;
-  AddTaskScreen(this.addTaskCallback);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,9 @@ class AddTaskScreen extends StatelessWidget {
             FlatButton(
               onPressed: (){
                 // タスクをリストに追加
-                addTaskCallback(newTaskTitle);
+                // context.read(変更を監視しない)、Provider.of(context, listen: false)に相当
+                context.read<TaskData>().addTask(newTaskTitle!);
+                Navigator.pop(context);
               },
               child: Text(
                 'Add',

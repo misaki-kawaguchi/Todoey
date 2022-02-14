@@ -4,7 +4,6 @@ import 'package:todoey_practice/models/task.dart';
 // 変更通知機能
 // notifyListenersが使えるようになり、変更を監視しているWidgetに変更が通知される
 class TaskData with ChangeNotifier {
-
   List<Task> tasks = [
     Task(name: 'Buy milk'),
     Task(name: 'Buy egg'),
@@ -13,5 +12,12 @@ class TaskData with ChangeNotifier {
 
   int get taskCount {
     return tasks.length;
-}
+  }
+
+  // リストを追加
+  void addTask(String newTaskTitle) {
+    final task = Task(name: newTaskTitle);
+    tasks.add(task);
+    notifyListeners();
+  }
 }
