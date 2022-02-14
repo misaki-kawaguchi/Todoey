@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
 
 // リスト1つ分
-class TaskTile extends StatelessWidget {
+class TaskTile extends StatefulWidget {
 
   @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text('This is a task.'),
-      trailing: TaskCheckbox(),
-    );
-  }
+  State<TaskTile> createState() => _TaskTileState();
 }
 
-// チェックボックス
-class TaskCheckbox extends StatefulWidget {
-
-  @override
-  State<TaskCheckbox> createState() => _TaskCheckboxState();
-}
-
-class _TaskCheckboxState extends State<TaskCheckbox> {
+class _TaskTileState extends State<TaskTile> {
 
   bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
+    return ListTile(
+      title: Text('This is a task.'),
+      trailing: TaskCheckbox(checkboxState: isChecked),
+    );
+  }
+}
+
+// チェックボックス
+class TaskCheckbox extends StatelessWidget {
+
+  final bool checkboxState;
+  TaskCheckbox({required this.checkboxState});
+
+  @override
+  Widget build(BuildContext context) {
     return Checkbox(
       activeColor: Colors.lightBlueAccent,
-      value: isChecked,
+      value: checkboxState,
       onChanged: (newValue) {
-        setState(() {
-          isChecked = newValue!;
-        });
       },
     );
   }
