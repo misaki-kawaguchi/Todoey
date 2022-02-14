@@ -51,6 +51,7 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -58,9 +59,39 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20.0),
                 ),
               ),
+              child: TasksList(),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// タスクのリスト一覧
+class TasksList extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        TaskTile(),
+        TaskTile(),
+      ],
+    );
+  }
+}
+
+// リスト1つ分
+class TaskTile extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text('This is a task.'),
+      trailing: Checkbox(
+        value: false,
+        onChanged: (bool? value) {},
       ),
     );
   }
