@@ -26,4 +26,10 @@ class TaskData with ChangeNotifier {
     _tasks.add(task);
     notifyListeners();
   }
+
+  // リストを更新（チェック機能）
+  void updateTask(Task task) {
+    task.toggleDone();
+    notifyListeners();
+  }
 }
